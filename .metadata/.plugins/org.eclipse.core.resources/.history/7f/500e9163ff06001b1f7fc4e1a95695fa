@@ -1,0 +1,14 @@
+package domein;
+
+public class Held {
+
+	Wapen wapen;
+
+	public void vecht() {
+		throw new UnsupportedOperationException();
+	}
+
+	public void setWapen(Wapen wapen) {
+		this.wapen = wapen;
+	}
+}

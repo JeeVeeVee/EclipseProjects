@@ -1,0 +1,8 @@
+[Desktop Entry]
+Comment=Eclipse
+Terminal=false
+Name=Eclipse
+Exec=/path/to/your/version/eclipse/eclipse
+Type=Application
+Icon=/path/to/your/version/eclipse/icon.xpm
+StartupWMClass=Eclipse

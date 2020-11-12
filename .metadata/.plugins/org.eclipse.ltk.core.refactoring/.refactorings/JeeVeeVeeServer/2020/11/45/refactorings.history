@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;JeeVeeVeeServer/src/startuo&apos; to &apos;startup&apos;" description="Rename resource &apos;startuo&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/startuo" name="startup" stamp="1604746681201" updateReferences="true"/>
+</session>

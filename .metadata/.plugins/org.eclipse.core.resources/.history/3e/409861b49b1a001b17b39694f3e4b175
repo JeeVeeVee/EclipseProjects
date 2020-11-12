@@ -1,0 +1,48 @@
+package domein;
+
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class Restaurant {
+	private Order order;
+	private Lock accessLock = new ReentrantLock();
+	private Condition kanOrderWegBrengen = accessLock.newCondition(); //kelner
+	private Condition kanOrderPlaatsen = accessLock.newCondition(); //kok
+	
+	public Order haalOrderOp() { //get
+		accessLock.lock();
+		Order ref = null;
+		try {
+			while(this.order == null) {
+				kanOrderWegBrengen.await();
+			}
+			ref = this.order;
+			this.order = null;
+		} catch (InterruptedException e) {
+			// TODO: handle exception
+			System.out.println(e);
+		} finally {
+			accessLock.unlock();
+			return this.order;
+		}
+		
+		
+	}
+	
+	public void plaatsOrder(Order order) {
+		accessLock.lock();
+		try {
+			while(order != null) {
+				kanOrderPlaatsen.await();	
+			}
+			this.order = order;
+			kanOrderPlaatsen.signal();
+		}catch (InterruptedException e) {
+				e.printStackTrace();
+		} finally {
+			accessLock.unlock();
+		}	
+	}
+
+}

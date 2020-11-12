@@ -1,0 +1,100 @@
+package domein;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Formatter;
+import java.util.Scanner;
+
+import sun.tools.java.ScannerInputReader;
+
+public class FileServer {
+    //attributen voor netwerkconnectie en streams
+	//private ServerSocket serverSocket;
+	private Socket socket;
+	private Scanner socketInput;
+	private Formatter socketOutput;
+
+    public void run() {
+        //initialiseer server
+        try ( ServerSocket serverSocket = new ServerSocket(11111, 10)) {
+            System.out.println("Fileserver up");
+            
+            //wacht tot een client verbindig maakt
+            //verwerk al de verzoeken van een client tot deze afsluit
+            //          delegeer naar hulpmethode processClient
+            //wacht opnieuw op een client, blijft dit doen
+            while (true) {
+                try {
+                    System.out.println("Fileserver waiting...");
+                    socket = serverSocket.accept();
+                    processClient();
+                } catch (IOException ex) {
+                    System.out.println("Problemen : " + ex.getMessage());
+                } 
+            }
+        } catch (IOException ex) {
+            System.out.println("Problemen met server connectie : " + 
+                                                ex.getMessage());
+        } 
+    }
+
+    private void processClient() {
+        //verwerk al de verzoeken van een client volgens het afgesproken protocol 
+        //tot deze afsluit
+        //sluit dan ook de connectie met deze client
+        //maak gebruik van de 3 onderstaande hulpmethoden
+        
+    	try {
+    		socketInput = new Scanner(socket.getInputStream());
+    		socketOutput = new Formatter(socket.getOutputStream());   
+    		
+    		File file;
+    		while(socketInput.hasNext()) {
+    			String actie = socketInput.nextLine();
+    			switch (actie) {
+    			case "READ" : 
+    				file = new File(socketInput.nextLine());
+    				if (file.exists()) {
+        				sendFile(file);
+        			} else {
+        				sendNoFile();
+        			}
+    				break;
+    			} 
+    		}
+    		socket.close();
+            
+        } catch (IOException ex) {
+            System.out.println("Problemen met client connectie : " + 
+                    ex.getMessage());
+        }
+    }
+
+    private void sendFile(File file) throws IOException {
+        //TODO
+    	socketOutput.format("%s%n", "FOUND");
+    	socketOutput.flush();
+    	try(Scanner scanner = new Scanner(file)){
+    		while(scanner.hasNext()) {
+	    		socketOutput.format("%s%n", scanner.nextLine());
+	    		socketOutput.flush();
+    		}
+    		socketOutput.format("%s%n", "EOF");
+    	}
+    }
+
+    private void sendNoFile() {
+    	socketOutput.format("%s%n", "NOTFOUND");
+    	socketOutput.flush();
+    
+    }
+    
+    private void readAndSaveUpdateFile(File file) throws IOException {
+        //TODO
+        
+    }
+
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SmartImportWizard">
+		<item key="SmartImportRootWizardPage.STORE_HIDE_ALREADY_OPEN" value="true"/>
+		<item key="SmartImportRootWizardPage.STORE_CLOSE_IMPORTED" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="false"/>
+		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="false"/>
+		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="/home/jules/eclipse-workspace/OOPIII_NET_lab_TCP_FileTransfer_Server_Start"/>
+			<item value="/home/jules/eclipse-workspace/OOPIII_NET_lab_TCP_FX_FileTransfer_Client_Start"/>
+			<item value="/home/jules/eclipse-workspace/OOPIII_NET_TCP_FX_server"/>
+			<item value="/home/jules/eclipse-workspace/OOPIII_NET_TCP_FX_client"/>
+			<item value="/home/jules/eclipse-workspace/OOPIII_NET_TCP_FX_common"/>
+			<item value="/home/jules/eclipse-workspace/OOPIII_DAT_MyList_generiek_start"/>
+			<item value="/home/jules/eclipse-workspace/OOII_DP_Strategy_SimpleFactory_opgave"/>
+			<item value="/home/jules/eclipse-workspace/OOP3/OOPIII_COL_collections_kleine_oef_opgave"/>
+			<item value="/home/jules/Desktop/Opdracht2E"/>
+			<item value="/home/jules/Desktop/Opdracht2E/ExamenKaartSpel_Start"/>
+			<item value="/home/jules/Desktop/Opdracht1A/Vraag1Start"/>
+			<item value="/home/jules/HoGent/jaar1/PROG2/OPLPROG2/H15Tekstbestanden"/>
+			<item value="/home/jules/HoGent/jaar1/PROG2/OPLPROG2/H15ObjectenSerialiseren"/>
+			<item value="/home/jules/Desktop/JavaFX_oef1"/>
+			<item value="/home/jules/Desktop/JavaFX_oef2"/>
+			<item value="/home/jules/Desktop/H14Oef1FX"/>
+			<item value="/home/jules/HoGent/jaar1/PROG2/OPLPROG2/JavaFX_oef2"/>
+			<item value="/home/jules/HoGent/OPLPROG2/JavaFX_oef1"/>
+			<item value="/home/jules/HoGent/OEFPROG2/OefH10Oef2"/>
+			<item value="/home/jules/HoGent/OPLPROG2/JavaFX_oef2"/>
+		</list>
+	</section>
+	<section name="ExternalProjectImportWizard">
+	</section>
+	<section name="ChooseWorkspaceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="608"/>
+		<item key="DIALOG_Y_ORIGIN" value="310"/>
+	</section>
+	<section name="ResourceNavigator">
+		<item key="ResourceViewer.STORE_SORT_TYPE" value="1"/>
+		<item key="ResourceWorkingSetFilter.STORE_WORKING_SET" value="Aggregate for window 1584344935452"/>
+		<item key="LINK_NAVIGATOR_TO_EDITOR" value="true"/>
+	</section>
+</section>

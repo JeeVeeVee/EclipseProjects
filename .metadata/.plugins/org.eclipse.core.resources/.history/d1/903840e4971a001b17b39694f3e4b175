@@ -1,0 +1,19 @@
+package domein;
+
+public class Restaurant {
+	private Order order;
+	
+	public Restaurant(Order order) {
+		this.order = order;
+	}
+	
+	public Order haalOrderOp() { //get
+		return this.order;
+	}
+	
+	public Order plaatsOrder(Order order) {
+		return order;
+		
+	}
+
+}

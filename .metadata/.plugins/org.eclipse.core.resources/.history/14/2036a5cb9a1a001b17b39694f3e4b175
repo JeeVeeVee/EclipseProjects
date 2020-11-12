@@ -1,0 +1,15 @@
+package domein;
+
+public class Restaurant {
+	private Order order;
+	
+	public Order haalOrderOp() { //get
+		return this.order;
+	}
+	
+	public void plaatsOrder(Order order) {
+		 this.order = order;
+		
+	}
+
+}

@@ -1,0 +1,8 @@
+package domein;
+
+public class Geweer implements Wapen {
+
+	public void valAan() {
+		throw new UnsupportedOperationException();
+	}
+}
