@@ -78,7 +78,6 @@ public class FileServer {
     }
 
     private void sendFile(File file) throws IOException {
-        //TODO
     	socketOutput.format("%s%n", "FOUND");
     	socketOutput.flush();
     	try(Scanner scanner = new Scanner(file)){
