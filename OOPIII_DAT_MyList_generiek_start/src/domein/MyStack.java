@@ -1,6 +1,8 @@
 package domein;
 
-public class MyStack<T> {
+import java.io.Serializable;
+
+public class MyStack<T extends Serializable> implements Serializable {
 
     private MyListIterable<T> list;
 

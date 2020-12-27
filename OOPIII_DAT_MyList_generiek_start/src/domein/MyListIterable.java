@@ -5,7 +5,7 @@ import exceptions.EmptyListException;
 import java.io.Serializable;
 import java.util.Iterator;
 
-public class MyListIterable<T extends Serializable> implements Iterable {
+public class MyListIterable<T extends Serializable> implements Iterable, Serializable {
     
     private Node<T>  firstNode;
     private Node<T> lastNode;
@@ -15,7 +15,7 @@ public class MyListIterable<T extends Serializable> implements Iterable {
         this("List");
     }
 
-    public MyListIterable(String name) {
+    public MyListIterable (String name) {
         nameList = name;
     }
 
@@ -32,12 +32,12 @@ public class MyListIterable<T extends Serializable> implements Iterable {
         StringBuilder buffer = new StringBuilder();
         buffer.append("The ").append(nameList).append(" is: ");
 
-        this.forEach(elem -> buffer.append(elem).append(" "));
+        this.forEach(elem -> buffer.append(elem.toString()).append(" "));
         return buffer.toString();
     }
 
-    public <T> void insertAtFront(T data) {
-        Node<T> aNode = new Node(data);
+    public void insertAtFront(T data) {
+        Node aNode = new Node(data);
         if (isEmpty()) {
             firstNode = lastNode = aNode;
         } else {
@@ -47,7 +47,7 @@ public class MyListIterable<T extends Serializable> implements Iterable {
     }
 
     public void insertAtBack(T data) {
-        Node<T> aNode = new Node(data);
+        Node aNode = new Node(data);
         if (isEmpty()) {
             firstNode = lastNode = aNode;
         } else {
@@ -78,7 +78,7 @@ public class MyListIterable<T extends Serializable> implements Iterable {
    
     private class MyIterator implements Iterator {
         
-        private Node<T> current = MyListIterable.this.firstNode;
+        private Node current = MyListIterable.this.firstNode;
 
         @Override
         public boolean hasNext() {return current != null;
@@ -86,7 +86,7 @@ public class MyListIterable<T extends Serializable> implements Iterable {
 
         @Override
         public T next() {
-            T data = current.getData();
+            T data = (T) current.getData();
             current = current.getNext();
             return data; 
         }

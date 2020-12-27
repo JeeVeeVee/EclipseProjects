@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import domein.MyStack;
 import exceptions.EmptyListException;
-import domein.*;
 
 public class TestStackGeneriek {
 
@@ -26,7 +25,7 @@ public class TestStackGeneriek {
 
 	//----------------------------------------------------------------------------
 	// STAP2
-	/*@Test
+	@Test
 	public void woordenToevoegenVerwijderen() 
 	{
 		woordenStack.push("lekker");
@@ -59,19 +58,6 @@ public class TestStackGeneriek {
 
 		Assertions.assertEquals(12.5, decGetallenStack.pop(), 0.0);
 		Assertions.assertTrue(decGetallenStack.isEmpty());
-	}*/
-	
-	@Test
-	public static <T> void itemsToevoegenVerwijderen(MyStack<T> stack, T[] input) {
-		
-		  for (int i = 0; i < input.length; i++) { stack.push(input[i]); }
-		  
-		  for (int i = input.length - 1; i >= 0; i--) {
-			  Assertions.assertFalse(stack.toString().isEmpty());
-			  Assertions.assertEquals(input[i], stack.pop()); 
-		  }
-		  Assertions.assertTrue(stack.isEmpty());
-		 
 	}
 
 	@Test
@@ -83,8 +69,10 @@ public class TestStackGeneriek {
 		itemsToevoegenVerwijderen(decGetallenStack, decGetallen);
 	}
 
-	//public void itemsToevoegenVerwijderen(MyStack myStack,     items){
-
+	public <T extends Serializable> void itemsToevoegenVerwijderen(MyStack<T> myStack,T[] items){
+		Arrays.stream(items).forEach(item -> myStack.push(item));
+		Arrays.stream(items).forEach(item -> myStack.pop());
+	}
 	//----------------------------------------------------------------------------
 	
 	@Test

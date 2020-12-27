@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="911.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tricksproject.gui.MainController">
+   <children>
+      <BorderPane fx:id="mainPane" prefHeight="634.0" prefWidth="912.0">
+         <left>
+            <VBox prefHeight="528.0" prefWidth="152.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="69.0" mnemonicParsing="false" onAction="#MetingToevoegen" prefHeight="113.0" prefWidth="150.0" text="Meting toevoegen">
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Properties/attachment.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="30.0" top="120.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="284.0" mnemonicParsing="false" onAction="#Forecast" prefHeight="111.0" prefWidth="150.0" text="Forecast">
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Properties/compass.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="30.0" top="30.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button contentDisplay="TOP" layoutX="10.0" layoutY="344.0" mnemonicParsing="false" onAction="#Report" prefHeight="107.0" prefWidth="150.0" text="Report">
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Properties/folder.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <VBox.margin>
+                        <Insets left="30.0" top="30.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+         </left>
+      </BorderPane>
+   </children>
+</StackPane>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="876.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tricksproject.gui.MeasureController">
+   <children>
+      <VBox layoutX="6.0" prefHeight="876.0" prefWidth="268.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose adress">
+               <VBox.margin>
+                  <Insets bottom="20.0" left="30.0" top="22.0" />
+               </VBox.margin>
+            </Text>
+            <ChoiceBox id="locationChoiceBox" fx:id="AdressCB" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="30.0" />
+               </VBox.margin>
+            </ChoiceBox>
+            <Button mnemonicParsing="false" onAction="#uploadAdress" text="Select">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose locationType">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <ChoiceBox id="locationChoiceBox" fx:id="locationTypeCB" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </ChoiceBox>
+            <Button mnemonicParsing="false" onAction="#uploadLocationType" text="Select">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choose  device (serialnr)">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <ChoiceBox id="locationChoiceBox" fx:id="devicesCB" prefWidth="150.0">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </ChoiceBox>
+            <Button mnemonicParsing="false" onAction="#uploadDevice" text="Select">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </Button>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter level of CO2">
+               <VBox.margin>
+                  <Insets left="30.0" top="20.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFCO2" disable="true">
+               <VBox.margin>
+                  <Insets left="30.0" right="80.0" top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter min level of CO2">
+               <VBox.margin>
+                  <Insets left="30.0" top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMINCO2" disable="true">
+               <VBox.margin>
+                  <Insets left="30.0" right="80.0" top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter max level of CO2">
+               <VBox.margin>
+                  <Insets left="30.0" top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMAXCO2" disable="true">
+               <VBox.margin>
+                  <Insets left="30.0" right="80.0" top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter level of N2">
+               <VBox.margin>
+                  <Insets left="30.0" top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFN2" disable="true">
+               <VBox.margin>
+                  <Insets left="30.0" right="80.0" top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter min level of N2">
+               <VBox.margin>
+                  <Insets left="30.0" top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMINN2" disable="true">
+               <VBox.margin>
+                  <Insets left="30.0" right="80.0" top="15.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter max level of N2">
+               <VBox.margin>
+                  <Insets left="30.0" top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMAXN2" disable="true">
+               <VBox.margin>
+                  <Insets left="30.0" right="80.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="284.0" layoutY="7.0" prefHeight="749.0" prefWidth="309.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter level of PM2.5">
+               <VBox.margin>
+                  <Insets bottom="15.0" top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFPM25" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter minlevel of PM2.5">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMINPM25" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter max level of PM2.5">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMAXPM25" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter level of PM5">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFPM5" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter min level of PM5">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMINPM5" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter max level of PM2.5">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMAXPM5" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter level of PM10">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFPM10" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter min level of PM10">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMINPM10" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Enter maxlevel of PM10">
+               <VBox.margin>
+                  <Insets top="15.0" />
+               </VBox.margin>
+            </Text>
+            <TextField fx:id="TFMAXPM10" disable="true">
+               <VBox.margin>
+                  <Insets right="150.0" top="20.0" />
+               </VBox.margin>
+            </TextField>
+            <Button mnemonicParsing="false" onAction="#uploadMeasurment" text="Upload measurement">
+               <VBox.margin>
+                  <Insets top="30.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

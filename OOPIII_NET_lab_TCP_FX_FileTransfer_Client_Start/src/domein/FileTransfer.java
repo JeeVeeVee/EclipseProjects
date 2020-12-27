@@ -7,16 +7,19 @@ import java.util.Scanner;
 
 public class FileTransfer {
     //Attributen netwerkverbinding/streams
-    private Socket socket;
-    private Scanner socketInput;
-    private Formatter socketOutput; 
+    //TODO
+    private final String EOF= "*E*O*F*";
+	Socket socket;
+	Formatter socketOutputFormatter;
+	Scanner socketInputScanner;
 
     public FileTransfer(String host) {
         try {
             //Maak verbinding met server, init attributen
-            socket = new Socket(host, 11111);
-            socketInput = new Scanner(socket.getInputStream());
-            socketOutput = new Formatter(socket.getOutputStream());
+            //TODO
+        	socket = new Socket(host, 44444);
+            socketInputScanner = new Scanner(socket.getInputStream());
+            socketOutputFormatter = new Formatter(socket.getOutputStream());
             
         } catch (IOException ex) {
             System.out.println("Probleem " + ex.getMessage());
@@ -26,21 +29,21 @@ public class FileTransfer {
     public String readFile(String fileNaam) {
         //verzoek server om bestand  'fileNaam' door te sturen
         //lees het bestand in als de server het doorstuurt
-    	socketOutput.format("%s%n", "READ");
-    	socketOutput.format("%s%n", fileNaam);
-    	socketOutput.flush();
-    	
-    	
-    	String reactie = socketInput.nextLine();
-    	if(reactie.equals("FOUND")) {
-    		String line = socketInput.nextLine();
-    		StringBuilder fileContent = new StringBuilder();
-    		while(line.equals("EOF")) {
-    			fileContent.append(line).append("\n");
-    			line = socketInput.nextLine();
-    		}
-    		return fileContent.toString();
-    	}
+        //TODO
+    	socketOutputFormatter.format("READ%s");
+    	socketOutputFormatter.flush();
+    	socketOutputFormatter.format("%s%n", fileNaam);        
+        socketOutputFormatter.flush();
+        String reactieString = socketInputScanner.nextLine();
+        if (reactieString.equals("FOUND")) {
+        	String line;
+            StringBuilder fileContent = new StringBuilder();
+            while (!(line=socketInputScanner.nextLine()).equals(EOF)){
+                //er moet nog iets
+                fileContent.append(line).append(System.lineSeparator());
+            }
+            return fileContent.toString();
+        }
         return "BESTAND NIET GEVONDEN";
     }
 
@@ -55,8 +58,10 @@ public class FileTransfer {
     
     public void closeConnection() {
         try {
-        	socket.close();
-        
+        //TODO
+        	if (socket != null){
+                socket.close();
+            }
         } catch (IOException ex) {
             System.out.println("Probleem " + ex.getMessage());
         }

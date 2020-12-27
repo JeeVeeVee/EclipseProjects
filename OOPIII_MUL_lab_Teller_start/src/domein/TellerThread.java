@@ -21,20 +21,33 @@ public class TellerThread implements Runnable {
 	}
 	
 	public void suspend() {
-		System.out.println("suspended");
 		accessLock.lock();
-		pauze = true;
-		accessLock.unlock();
+		try {
+			pauze = true;
+		} finally {
+			accessLock.unlock();
+		}
+
 	}
 	
 	public void resume() {
-		pauze = false;
+		accessLock.lock();
+		try {
+			pauze = false;
+			kanDoorgaan.signal();
+		} finally {
+			accessLock.unlock();
+		}
+
 	}
 	
 	public void stop() {
 		accessLock.lock();
-		going = false;
-		accessLock.unlock();
+		try {
+			going = false; 
+		} finally {
+			accessLock.unlock();
+		}
 
 	}
 	
@@ -44,15 +57,18 @@ public class TellerThread implements Runnable {
 			teller.set(teller.get()+1);
 			try {
 				Thread.sleep(100);
-				while(pauze) {
-					System.out.println("we wait");
-				}	
-			System.out.println(teller);
+				accessLock.lock();
+				while (pauze) {
+					kanDoorgaan.await();
+				}
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 				Thread.currentThread().interrupt();
-			} 			
+			} finally {
+				accessLock.unlock();
+			}
+							
 		}
-		
 	}
 }
