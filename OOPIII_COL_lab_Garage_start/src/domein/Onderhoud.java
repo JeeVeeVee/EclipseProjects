@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 
-public class Onderhoud implements Serializable, Comparable<Onderhoud>{
+public class Onderhoud implements Serializable  {
 	private static final long serialVersionUID = 1L;
     private LocalDate begindatum;
     private LocalDate einddatum;
@@ -48,15 +48,5 @@ public class Onderhoud implements Serializable, Comparable<Onderhoud>{
                 begindatum.format(format),
                 einddatum.format(format));
     }
-
-	@Override
-	public int compareTo(Onderhoud o) {
-		if(this.getNummerplaat().compareTo(o.nummerplaat) == 0){
-			return this.begindatum.compareTo(o.getBegindatum());
-		} else {
-			return this.getNummerplaat().compareTo(o.nummerplaat);
-		}
-	}
-
 
 }

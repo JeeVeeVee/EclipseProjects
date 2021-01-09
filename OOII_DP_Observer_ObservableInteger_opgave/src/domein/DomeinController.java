@@ -1,0 +1,18 @@
+package domein;
+
+public class DomeinController {
+    
+    private ObservableInteger observableInteger = new ObservableInteger();
+
+    public void up() {
+        observableInteger.add(1);
+    }
+
+    public void down() {
+        observableInteger.subtract(1);
+    }
+   
+    public int getDoubleValue() {
+       return observableInteger.getDoubleValue();
+    }
+}

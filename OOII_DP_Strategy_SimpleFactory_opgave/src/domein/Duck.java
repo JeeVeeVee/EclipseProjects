@@ -6,12 +6,7 @@ public abstract class Duck {
 
     private FlyBehavior flyBehavior;
 
-    public Duck(QuackBehavior quackBehavior, FlyBehavior flyBehavior) {
-		setQuackBehavior(quackBehavior);
-		setFlyBehavior(flyBehavior);
-	}
-
-	public void setFlyBehavior(FlyBehavior flyBehavior) {
+    public void setFlyBehavior(FlyBehavior flyBehavior) {
         this.flyBehavior = flyBehavior;
     }
 

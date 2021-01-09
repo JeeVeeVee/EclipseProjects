@@ -1,6 +1,8 @@
 package ui;
 
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class KleineOefeningenList_Opgave {
 
@@ -10,18 +12,21 @@ public class KleineOefeningenList_Opgave {
     //------------------------------------------------------------------------------
     public KleineOefeningenList_Opgave() {
 
-        // cre�er arrayList list en vul op met { "red", "white", "blue" }  (= 1 instructie)
+        // cre�er arrayList list en vul op met { "red", "white", "blue" }  (= 1 instructie
         //----------------------------------------------------
+    	List<String> list = new ArrayList<>(Arrays.asList(COLORS));
+    	
+    	
         weergevenLijst("oplossing: red white blue ", list);
 
 		// Cre�er een tweede lege arrayList (list2)
 		// -------------------------------------------
-		
+		ArrayList<String> list2 = new ArrayList<>();
 
 		// alle elementen van list kopi�ren naar een tweede arrayList list2 (= 1
 		// instructie)
 		// ---------------------------------------------------------------------------------
-		
+		//list.addAll(list2);
 		
         naarHoofdletterOmzetten(list);
         weergevenLijst("oplossing: alle elementen van list in hoofdletters", list);
@@ -31,16 +36,22 @@ public class KleineOefeningenList_Opgave {
 
    } // end constructor
 
-   public void weergevenLijst(String oplossing, List<String> list) {
+    public <T> void weergevenLijst(String oplossing, List<T> list) {
         //Geef alle elementen van de List weer (laat een spatie tussen elk element).
         //Gebruik printf*/
         //--------------------------------------------------------------------------
         System.out.printf("%s%n%s", oplossing, "           ");
-
-
-
+        
+        //for (T el: list){
+        //    System.out.println("%s ", el);
+        //}
+        
+        for(T elem: list) {
+            System.out.printf("%s ", elem);
+        }
+        
+        list.forEach(el -> System.out.printf("%s ", el));
         System.out.println("\n");
-
     }
 
     public void naarHoofdletterOmzetten(List<String> list) {

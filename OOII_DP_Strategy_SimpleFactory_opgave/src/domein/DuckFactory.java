@@ -2,10 +2,6 @@ package domein;
 
 public class DuckFactory {
 
-	public static Duck createDuck(DuckSpecies specie) {
-		return new Red
-	}
-
     
 /*
         new RedheadDuck(new Quack(), new FlyWithWings());

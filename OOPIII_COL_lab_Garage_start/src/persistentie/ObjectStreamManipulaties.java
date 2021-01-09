@@ -34,10 +34,8 @@ public class ObjectStreamManipulaties {
         try (ObjectInputStream ois = 
         		new ObjectInputStream(Files.newInputStream(naamBestand.toPath()))){
             while (true) {
-                T new_object = (T) ois.readObject();
-                li.add(new_object);
-                if(false){
-                }
+                li.add((T) ois.readObject());
+                
             }
         } catch (EOFException e) {
             //EOF bereikt, continue

@@ -1,5 +1,5 @@
 package domein;
 
 public enum DuckSpecies {
-	DECOY, MALLALD, REDHEAD, RUBBER
+	DECOY, REDHEAD, RUBBER, MALLARD
 }

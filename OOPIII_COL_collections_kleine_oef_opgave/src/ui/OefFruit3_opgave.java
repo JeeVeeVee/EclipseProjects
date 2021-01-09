@@ -10,7 +10,7 @@ public class OefFruit3_opgave {
         {"banaan", "mango", "citroen", "kiwi", "zespri", "pruim"},
         {"peche", "lichi", "kriek", "kers", "papaya"}};
 
-        List<String> list =           ;
+        List<String> list =         ;
         Scanner in = new Scanner(System.in);
 
         //declaratie + creatie map

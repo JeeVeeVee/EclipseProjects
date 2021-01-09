@@ -14,7 +14,7 @@ public class OnderhoudMapper {
     }
     
     public List<Onderhoud> geefOnderhoudVanAutos() {
-    	return new ObjectStreamManipulaties().leesObjecten(naamBestand);
+ 	return new ObjectStreamManipulaties().leesObjecten(naamBestand);
     }
 
 }

@@ -1,11 +1,21 @@
 package domein;
 
-import java.awt.print.Printable;
 import java.io.File;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
-import persistentie.AutoMapper;
+
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.Iterator;
+
 import persistentie.PersistentieController;
 
 public class Garage {
@@ -30,8 +40,7 @@ public class Garage {
                 = new PersistentieController(auto, onderhoud);
 
         //Set<Auto> inlezen - stap1
-        Set<Auto> autoSet = new HashSet<>();
-        autoSet.addAll(persistentieController.geefAutos());
+        Set<Auto> autoSet = new HashSet<>(persistentieController.geefAutos());
         System.out.println("STAP 1");
 
         // Maak map van auto's: volgens nummerplaat - stap2
@@ -63,53 +72,49 @@ public class Garage {
 
     // Maak map van auto's: volgens nummerplaat - stap2
     private Map<String, Auto> omzettenNaarAutoMap(Set<Auto> autoSet) {
-    	HashMap<String, Auto> outputHashMap = new HashMap<>();
-    	List<Auto> autos = new ArrayList<>(autoSet);
-    	Iterator<Auto> iterator = autos.iterator();
-    	while(iterator.hasNext()) {
-    		Auto auto  = iterator.next();
-    		outputHashMap.put(auto.getNummerplaat(), auto);
-    	}
-    	return outputHashMap;
+        return autoSet.stream().collect(Collectors.toMap(Auto::getNummerplaat, a -> a));
     }
 
     // lijst sorteren - stap4
     private void sorteren(List<Onderhoud> lijstOnderhoud) {
-        Collections.sort(lijstOnderhoud);
+    	lijstOnderhoud.stream().sorted(Comparator.comparing(Onderhoud::getNummerplaat).thenComparing(Onderhoud::getBegindatum))
+    		.forEach(System.out::println);
     }
 
     // lijst samenvoegen - stap5
     private void aangrenzendePeriodenSamenvoegen(List<Onderhoud> lijstOnderhoud) {
-//java 7
-    	Iterator<Onderhoud> iterator = lijstOnderhoud.iterator();
-	    while(iterator.hasNext()) {
-	        Onderhoud onderhoud = iterator.next();
-	        Onderhoud onderhoudNext = iterator.next();
-	        if (onderhoud.getEinddatum().plusDays(1).equals(onderhoudNext.getBegindatum())){
-	        	lijstOnderhoud.remove(onderhoud);
-	        	lijstOnderhoud.remove(onderhoudNext);
-	        	lijstOnderhoud.add(new Onderhoud(onderhoud.getBegindatum(), onderhoudNext.getEinddatum(), onderhoud.getNummerplaat()));
-	        }     
-    	}
+        //java 7
+            Iterator<Onderhoud> iterator = lijstOnderhoud.iterator();
+            Onderhoud onderhoud = null;
+            Onderhoud onderhoudNext = null;
 
-
-    }
+            while (iterator.hasNext()){
+                onderhoud = onderhoudNext;
+                onderhoudNext = iterator.next();
+                if (onderhoud != null && onderhoud.getNummerplaat().equals(onderhoudNext.getNummerplaat())){
+                    if (onderhoud.getEinddatum().plusDays(1).equals(onderhoudNext.getBegindatum()))
+                    {//samenvoegen:
+                        onderhoud.setEinddatum(onderhoudNext.getEinddatum());
+                        iterator.remove();
+                        onderhoudNext = onderhoud;
+                    }
+                }
+            }
+        }
 
     // Maak map van onderhoud: volgens nummerplaat - stap6
     private Map<String, List<Onderhoud>>
             omzettenNaarOnderhoudMap(List<Onderhoud> onderhoudLijst) {
-        return null;
+        return onderhoudLijst.stream().collect(Collectors.groupingBy(Onderhoud::getNummerplaat));
     }
 
     //Hulpmethode - nodig voor stap 7        
     private int sizeToCategorie(int size) {
-        if(size == 0 || size == 1){
-            return 0;
-        } else if (size == 2 || size == 3){
-            return 1;
-        } else {
-            return 2;
-        }
+        return switch (size) {
+            case 0, 1 -> 0;
+            case 2, 3 -> 1;
+            default -> 2;
+        };
     }
 
     // Maak overzicht: set van auto's - stap7
@@ -119,24 +124,44 @@ public class Garage {
         //van Map<String, List<Onderhoud>> 
         //naar Map<Integer, Set<Auto>> (hulpmethode gebruiken)
         //naar              List<Set<Auto>> 
-        return null;
+    	ArrayList<Set<Auto>> outputArrayList = new ArrayList<>();
+    	autoOnderhoudMap.keySet().stream().filter(key -> sizeToCategorie(autoOnderhoudMap.get(key).size()) == 0);
+    	outputArrayList.add(null);
+    	return outputArrayList;
     }
 
-//Oefening DomeinController:
     public String autoMap_ToString() {
         //String res = autoMap.
-        return null;
+        return autoMap.values()
+                .stream()
+                .sorted(Comparator.comparing(Auto::getNummerplaat))
+                .map(Auto::toString)
+                .collect(Collectors.joining("\n"))
+                ;
     }
 
     public String autoOnderhoudMap_ToString() {
         //String res = autoOnderhoudMap.
-        return null;
+        return autoOnderhoudMap.entrySet().stream()
+                //.sorted(Comparator.comparing(Map.Entry::getKey())) // IS OKE, maar er is aangepaste meth
+                .sorted(Map.Entry.comparingByKey())
+                .map(entry -> String.format("%s:%n%s", entry.getKey(), entry.getValue().stream() //Stream<Onderhoud>
+                        .map(Onderhoud::toString)
+                        .collect(Collectors.joining("\n"))))
+                .collect(Collectors.joining("\n"))
+        ;
     }
 
     public String overzicht_ToString() {
-        overzichtteller = 1;
+        overzichtteller = 1; //attribuut
         //String res = overzichtLijstVanAutos.
-        return null;
+        //int teller = 1 // KAN NIET, WANT MOET EFFECTIVE FINAL ZIJN
+        return overzichtLijstVanAutos.stream()
+                .map(autoset -> String.format("%d%n%s", overzichtteller++
+                    ,autoset.stream().map(Auto::toString).collect(Collectors.joining("\n"))))
+                .collect(Collectors.joining("\n"))
+        ;
     }
+
 
 }

@@ -1,8 +1,5 @@
 package main;
 
-import java.util.Arrays;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.stream.IntStream;
 
 import domein.Kind;
@@ -28,9 +25,6 @@ public class ZwembadApplicatie {
 
 		// VUL VERDER AAN
 		// --------------
-		ExecutorService threadpool = Executors.newFixedThreadPool(kind.length + 1);
-		threadpool.execute(vat);
-		Arrays.stream(kind).forEach(eenKind -> threadpool.execute(eenKind));
-		threadpool.shutdown();
+
 	}
 }
